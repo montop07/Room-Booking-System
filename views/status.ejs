@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Add your head content here -->
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300&family=Roboto:ital,wght@0,300;0,400;0,700;1,100&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins";
+      background: linear-gradient(to right, #1C1818, #424747);
+
+    }
+
+    .navbar {
+      width: 300px;
+      height: 100vh;
+      background-color: #1C1818;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .navbar h3 {
+        color: white;
+        text-align: center;
+    }
+
+    .navbar-nav {
+        list-style: none;
+        padding: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        width: 280px;
+        transition: background-color 0.3s;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    h3,
+    h2 {
+        color: white;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin-top: 100px;
+        margin-left: 600px;
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.356);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        align-self: center;
+    }
+    #status {
+            color: #353C35;
+            z-index: 5;
+            text-align: center;
+            margin-top: 250px;
+            position: absolute;
+            justify-content: baseline;
+        }
+    input,select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #353C35;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        span{
+            font-size: 40px;
+        }
+    
+</style>
+</head>
+<body>
+    <div style="text-align: center; background-color: #1C1818; color: white; font-size: 45px;">
+        Welcome to Room Booking System - TIET
+      </div>
+    <div class="form-container">
+
+        <form action="/getStatus" method="post" name="checkform">
+            <label>Proposal ID</label>
+            <input type="text" name="check" id="checkstring" placeholder="Enter String" required>
+            <br><br>
+            <button type="button" onclick="checkProposalStatus()">Submit</button>
+        </form>
+    
+        <div id="status"></div>
+</div>
+
+<nav class="navbar">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <img src="https://cdn-icons-png.flaticon.com/256/149/149071.png"
+              style="width: 100px; height: 100px; cursor: pointer; border-radius: 50px">
+          </li>
+        <li class="nav-item">
+            <h2>Hello <span>&#128075;&#127995;</span></h2>
+        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index"><h3>Apply for Event</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="getStatus"><h3>Check your Status</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="availability"><h3>Check Room Availability</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login"><h3>Logout</h3></a>
+            </li>
+        </ul>
+</nav>
+<script>
+    async function checkProposalStatus() {
+        const checkstring = document.getElementById('checkstring').value;
+
+        // Make a fetch request to your server to get the status
+        const response = await fetch(`/getStatus`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ check: checkstring }),
+        });
+
+        const data = await response.json();
+
+        // Display the status on the page
+        document.getElementById('status').innerHTML = `<p>Status: ${data.status}</p>`;
+    }
+</script>
+</body>
+
+</html>

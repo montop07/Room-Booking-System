@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@300&family=Roboto:ital,wght@0,300;0,400;0,700;1,100&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins";
+            background: linear-gradient(to right, #1C1818, #424747);
+
+        }
+
+        .navbar {
+            width: 300px;
+            height: 100vh;
+            background-color: #1C1818;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .navbar h3 {
+            color: white;
+            text-align: center;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            width: 100%;
+            text-align: center;
+
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            width: 280px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h3,
+        h2 {
+            color: white;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            padding-left: 100px;
+            padding-right: 100px;
+            margin-top: 25px;
+            margin-left: 600px;
+            width: 300px;
+            height: 700px;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.356);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            align-self: center;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+
+        button {
+            width: 50%;
+            padding: 10px;
+            background-color: #353C35;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+        #status {
+            color: #353C35;
+            margin-top: 20px;
+        }
+        span{
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center; background-color: #1C1818; color: white; font-size: 45px;">
+        Welcome to Room Booking System - TIET
+    </div>
+    <div class="form-container">
+        <form action="/add" method="post" id="add-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="societyName">Society</label>
+                <input type="text" class="form-control" id="societyName" name="Society" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Id</label>
+                <input type="text" class="form-control" id="Email" name="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="firstDropdown">Select Block</label>
+                <select id="firstDropdown" onchange="toggleSecondDropdown() " name="Block">
+                    <option value="select" disabled selected>Select</option>
+                    <option value="B-Block">B-Block</option>
+                    <option value="E-Block">E-Block</option>
+                    <option value="Auditoriums">Auditoriums</option>
+                    <option value="LP-LT">LP/LT Rooms</option>
+                </select>
+                <br><br>
+                <!-- Second Dropdown -->
+                <label for="secondDropdown">Select Room</label>
+                <select id="secondDropdown" name="ConfRoom">
+                    <!-- Options will be dynamically populated using JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eventName">Event Name</label>
+                <input type="text" class="form-control" id="eventName" name="EventName" required>
+            </div>
+            <div class="form-group">
+                <label for="proposal">Proposal (PDF)</label>
+                <input type="file" class="form-control-file" id="proposal" name="file" accept=".pdf" required>
+            </div>
+            <div class="form-group">
+                <label for="participation">Participation</label>
+                <input type="text" class="form-control" id="participation" name="Participation" required>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Starting Date</label>
+                <input type="date" class="form-control" id="startDate" name="StartingDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <img src="https://cdn-icons-png.flaticon.com/256/149/149071.png"
+                    style="width: 100px; height: 100px; cursor: pointer; border-radius: 50px">
+            </li>
+            <li class="nav-item">
+                <h2>Hello <span>&#128075;&#127995;</span></h2>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index">
+                    <h3>Dashboard</h3>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="getStatus">
+                    <h3>Check your Status</h3>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="availability">
+                    <h3>Check Room Availability</h3>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login">
+                    <h3>Logout</h3>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+<script>
+    function toggleSecondDropdown() {
+        // Get the selected value from the first dropdown
+        var selectedCategory = document.getElementById("firstDropdown").value;
+
+        // Get the second dropdown
+        var secondDropdown = document.getElementById("secondDropdown");
+
+        // Hide or show the second dropdown based on the selected option
+        if (selectedCategory === "select") {
+            secondDropdown.style.display = "none";  // Hide the second dropdown
+        } else {
+            secondDropdown.style.display = "block"; // Show the second dropdown
+            populateSecondDropdown(); // Populate options based on the selected category
+        }
+    }
+
+    function populateSecondDropdown() {
+        // Get the selected value from the first dropdown
+        var selectedCategory = document.getElementById("firstDropdown").value;
+
+        // Get the second dropdown
+        var secondDropdown = document.getElementById("secondDropdown");
+
+        // Clear existing options
+        secondDropdown.innerHTML = "";
+
+        // Populate options based on the selected category
+        if (selectedCategory === "B-Block") {
+            addOption(secondDropdown, "B-105", "B-105");
+            addOption(secondDropdown, "B-106", "B-106");
+            addOption(secondDropdown, "B-107", "B-107");
+            addOption(secondDropdown, "B-108", "B-108");
+            addOption(secondDropdown, "B-109", "B-109");
+        } else if (selectedCategory === "E-Block") {
+            addOption(secondDropdown, "E-102", "E-102");
+            addOption(secondDropdown, "E-103", "E-103");
+            addOption(secondDropdown, "E-104", "E-104");
+            addOption(secondDropdown, "E-105", "E-105");
+            addOption(secondDropdown, "E-202", "E-202");
+            addOption(secondDropdown, "E-203", "E-203");
+            addOption(secondDropdown, "E-204", "E-204");
+            addOption(secondDropdown, "E-205", "E-205");
+        }
+        else if (selectedCategory === "Auditoriums") {
+            addOption(secondDropdown, "C-HALL", "C-HALL");
+            addOption(secondDropdown, "MAIN AUDI", "MAIN AUDI");
+            addOption(secondDropdown, "TAN AUDI", "TAN AUDI");
+
+        }
+        else if (selectedCategory === "LP-LT") {
+            addOption(secondDropdown, "LP-102", "LP-102");
+            addOption(secondDropdown, "LP-104", "LP-104");
+            addOption(secondDropdown, "LP-108", "LP-108");
+            addOption(secondDropdown, "LP-109", "LP-109");
+            addOption(secondDropdown, "LP-110", "LP-110");
+            addOption(secondDropdown, "LT-101", "LT-101");
+            addOption(secondDropdown, "LT-102", "LT-102");
+            addOption(secondDropdown, "LT-103", "LT-103");
+            addOption(secondDropdown, "LT-201", "LT-201");
+            addOption(secondDropdown, "LT-202", "LT-202");
+        }
+    }
+
+    function addOption(selectElement, value, text) {
+        // Create a new option element
+        var option = document.createElement("option");
+
+        // Set the value and text of the option
+        option.value = value;
+        option.text = text;
+
+        // Append the option to the select element
+        selectElement.appendChild(option);
+    }
+
+    // Initial population and visibility setup of the second dropdown
+    toggleSecondDropdown();
+</script>
+
+</html>

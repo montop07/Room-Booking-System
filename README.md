@@ -7,15 +7,15 @@
    Societies can check the availability of rooms before booking.
 ## Event Proposal Submission:
 
-   Allows societies to book rooms by submitting a proposal file and necessary event details.
-   Provides a unique 8-digit code to track the status of each submitted proposal.
+   1) Allows societies to book rooms by submitting a proposal file and necessary event details.
+   2) Provides a unique 8-digit code to track the status of each submitted proposal.
 ## Admin Interface:
 
 ### Enables the admin to:
-   Review all proposals submitted by societies.
-   Update the list of rooms available to societies.
-   Accept or reject event proposals based on submitted details.
-Supports filtering proposals by participation count, society name, and room name for efficient management.
+   1) Review all proposals submitted by societies.
+   2) Update the list of rooms available to societies.
+   3) Accept or reject event proposals based on submitted details.
+   4) Support filtering proposals by participation count, society name, and room name for efficient management.
 # Benefits:
 Eliminates the paperwork ordeal for event proposals.
 Provides a user-friendly interface for both societies and administrators.

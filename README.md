@@ -1,6 +1,6 @@
 # Room-Booking-System
 
-The Room-Booking-System is designed to assist college societies and clubs in streamlining the process of submitting proposals for their events, thereby eliminating the need for paperwork.
+    The Room-Booking-System is designed to assist college societies and clubs in streamlining the process of submitting proposals for their events, thereby eliminating the need for paperwork.
 
 # Features:
    # Room Availability Check:
@@ -12,8 +12,8 @@ The Room-Booking-System is designed to assist college societies and clubs in str
 # Admin Interface:
 
    # Enables the admin to:
-        Review all proposals submitted by societies.
-        Update the list of rooms available to societies.
+    Review all proposals submitted by societies.
+     Update the list of rooms available to societies.
         Accept or reject event proposals based on submitted details.
     Supports filtering proposals by participation count, society name, and room name for efficient management.
 # Benefits:
